@@ -58,5 +58,83 @@
         </executions>
       </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.gradle</groupId>
+          <artifactId>develocity-maven-extension</artifactId>
+          <configuration>
+            <develocity>
+              <plugins>
+                <plugin>
+                  <artifactId>exec-maven-plugin</artifactId>
+                  <inputs>
+                    <fileSets>
+                      <fileSet>
+                        <name>name-txt</name>
+                        <paths>
+                          <path>name.txt</path>
+                        </paths>
+                      </fileSet>
+                    </fileSets>
+
+                    <properties>
+                      <property><name>addOutputToClasspath</name></property>
+                      <property><name>addResourcesToClasspath</name></property>
+                      <property><name>arguments</name></property>
+                      <property><name>async</name></property>
+                      <property><name>asyncDestroyOnShutdown</name></property>
+                      <property><name>classpathScope</name></property>
+                      <property><name>commandlineArgs</name></property>
+                      <property><name>environmentScript</name></property>
+                      <property><name>environmentVariables</name></property>
+                      <property><name>executable</name></property>
+                      <property><name>executableDependency</name></property>
+                      <property><name>forceJava</name></property>
+                      <property><name>inheritIo</name></property>
+                      <property><name>longClasspath</name></property>
+                      <property><name>longModulepath</name></property>
+                      <property><name>outputFile</name></property>
+                      <property><name>quietLogs</name></property>
+                      <property><name>sourceRoot</name></property>
+                      <property><name>successCodes</name></property>
+                      <property><name>testSourceRoot</name></property>
+                      <property><name>timeout</name></property>
+                      <property><name>toolchain</name></property>
+                      <property><name>useMavenLogger</name></property>
+                    </properties>
+
+                    <ignoredProperties>
+                      <ignore>workingDirectory</ignore>
+                      <ignore>buildDirectory</ignore>
+                      <ignore>basedir</ignore>
+
+                      <ignore>project</ignore>
+                      <ignore>pluginDependencies</ignore>
+                      <ignore>session</ignore>
+                    </ignoredProperties>
+
+                  </inputs>
+                  <outputs>
+                    <cacheableBecause>CPU intensive operation</cacheableBecause>
+                    <files>
+                      <file>
+                        <name>hello-txt</name>
+                        <path>${project.build.directory}/hello.txt</path>
+                      </file>
+                    </files>
+                  </outputs>
+
+                  <skipIfTrue>
+                    <property>skip</property>
+                  </skipIfTrue>
+
+                </plugin>
+              </plugins>
+            </develocity>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>
