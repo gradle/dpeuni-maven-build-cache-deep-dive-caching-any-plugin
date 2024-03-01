@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>third-party-plugins</artifactId>
+  <version>1.0</version>
+  <name>Third Party or Custom Plugins Example</name>
+
+  <properties>
+    <jdk.version>11</jdk.version>
+    <maven.compiler.source>${jdk.version}</maven.compiler.source>
+    <maven.compiler.target>${jdk.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.9.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit-pioneer</groupId>
+      <artifactId>junit-pioneer</artifactId>
+      <version>2.2.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.12.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>create-file</id>
+            <phase>generate-resources</phase>
+            <goals><goal>exec</goal></goals>
+            <configuration>
+              <workingDirectory>${project.build.directory}</workingDirectory>
+              <executable>bash</executable>
+              <arguments>
+                <argument>-c</argument>
+                <!-- read file `name.txt`, prefix contents with `hello ` and create `hello.txt` -->
+                <argument>person=`cat ../name.txt`; echo "hello $person" > hello.txt</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
