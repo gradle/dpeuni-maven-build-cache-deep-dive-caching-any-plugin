@@ -9,4 +9,15 @@
       <enabled>false</enabled>
     </remote>
   </buildCache>
+  <buildScan>
+    <tags>
+      <tag>dpeuni-maven-build-cache-deep-dive-caching-any-plugin</tag>
+    </tags>
+    <values>
+      <value>
+        <name>Course</name>
+        <value>Maven Build Cache Deep Dive</value>
+      </value>
+    </values>
+  </buildScan>
 </gradleEnterprise>
